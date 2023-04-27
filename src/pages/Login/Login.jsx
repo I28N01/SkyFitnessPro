@@ -1,4 +1,4 @@
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { useState } from 'react';
 import React from 'react';
 import S from './Login.module.scss';
@@ -9,7 +9,7 @@ const Login = () => {
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   // const handleEmailChange = ({ target }) => {
   //     setEmail(target.value)
@@ -19,9 +19,9 @@ const Login = () => {
   //     setPassword(target.value)
   // }
 
-  // const handleSignup = () => {
-  //     navigate('/signup')
-  // }
+  const handleSignup = () => {
+      navigate('/Signup')
+  }
 
   return (
     <div className={S.container}>
@@ -31,7 +31,7 @@ const Login = () => {
           <input className={S.input} placeholder="Логин" type="text" />
           <input className={S.input} placeholder="Пароль" type="password" />
           <button className={S.loginButton}> Войти</button>
-          <button className={S.signupButton} type="button">
+          <button className={S.signupButton} onClick={handleSignup} type="button">
             Зарегистрироваться
           </button>
         </form>

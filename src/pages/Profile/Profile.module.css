@@ -32,7 +32,6 @@
 }
 
 .name {
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -43,9 +42,43 @@
   color: #000000;
 }
 
+.arrowBlock {
+  position: relative;
+}
+
 .arrow {
   width: 14px;
   height: 10px;
+}
+
+.exit {
+  position: absolute;
+  width: 278px;
+  height: 52px;
+  left: -29px;
+  top: 30px;
+}
+
+.buttonExit {
+  width: 77px;
+  height: 36px;
+  background-color: #580EA2;
+  border-radius: 46px;
+  outline: none;
+  border: none;
+  color: #FFF;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin-right: 140px;
+  cursor: pointer;
+}
+.buttonExit:hover {
+  background-color: #3F007D;
+}
+.buttonExit:active {
+  background-color: #271A58;
 }
 
 .profileBlock {
@@ -56,7 +89,6 @@
 
 .title {
   margin-bottom: 40px;
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
@@ -67,7 +99,6 @@
 
 .text {
   margin-bottom: 20px;
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -88,7 +119,6 @@
 }
 
 .titleCourse {
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
@@ -123,7 +153,6 @@
   height: 43px;
   background: #C7E957;
   border-radius: 80px;
-  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -131,10 +160,9 @@
   display: flex;
   align-items: center;
   text-align: center;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 20px;
+  padding-left: 14px;
+  padding-top: 9px;
+  padding-bottom: 9px;
   letter-spacing: -0.05px;
   font-feature-settings: "pnum" on, "lnum" on;
   color: #000000;
@@ -145,11 +173,11 @@
 .button {
   width: 278px;
   height: 52px;
-  font-family: "StratosSkyeng", serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
   color: #FFFFFF;
   letter-spacing: -0.05px;
   background-color: #580EA2;

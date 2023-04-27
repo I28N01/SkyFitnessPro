@@ -8,6 +8,9 @@ import Bodyflex_prev from '../pages/Workout/Bodyflex_prev';
 import Login from '../pages/Login/Login';
 import Signup from '../pages/Signup/Signup';
 import ChooseWorkout from '../pages/NewData/ChooseWorkout/ChooseWorkout';
+import Profile from '../pages/Profile/Profile';
+import PasswordChange from '../pages/NewData/PasswordChange/PasswordChange';
+import NameChange from '../pages/NewData/NameChange/NameChange';
 
 // export const privateRoutes = [
 
@@ -15,6 +18,9 @@ import ChooseWorkout from '../pages/NewData/ChooseWorkout/ChooseWorkout';
 
 export const publicRoutes = [
   { path: '/main', component: <Main /> },
+  { path: '/profile', component: <Profile /> },
+  { path: '/passchange', component: <PasswordChange /> },
+  { path: '/namechange', component: <NameChange /> },
   { path: '/workout/yoga', component: <Yoga_prev /> },
   { path: '/workout/stretching', component: <Stretching_prev /> },
   { path: '/workout/dance', component: <Dance_prev /> },
