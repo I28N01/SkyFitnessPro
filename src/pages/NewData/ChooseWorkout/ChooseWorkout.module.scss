@@ -27,6 +27,7 @@
   font-size: 32px;
   line-height: 40px;
   color: #000000;
+  user-select: none;
 }
 
 .checked {
@@ -65,19 +66,23 @@
 
 .singleWorkout {
   border: 1px solid #000000;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: 95% 20%;
   border-radius: 26px;
   padding: 10px 28px;
   width: 222px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 
   &__title {
     font-style: normal;
     font-size: 20px;
     line-height: 115%;
     text-align: center;
-    color: #000000;
+    user-select: none;
   }
 
   &__subTitle {
@@ -85,32 +90,20 @@
     font-size: 16px;
     line-height: 18px;
     text-align: center;
-    color: #000000;
+    user-select: none;
   }
 }
 
 .singleWorkout_active {
+  background-image: url(./cheked.png);
   border: 1px solid #06b16e;
+  color: #06b16e;
+  background-repeat: no-repeat;
+  background-position: 95% 20%;
   border-radius: 26px;
   padding: 10px 28px;
+  width: 222px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-
-  &__title {
-    font-style: normal;
-    font-size: 20px;
-    line-height: 115%;
-    text-align: center;
-    color: #06b16e;
-  }
-
-  &__subTitle {
-    font-style: normal;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
-    color: #06b16e;
-  }
 }

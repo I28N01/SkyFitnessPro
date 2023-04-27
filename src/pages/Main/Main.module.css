@@ -1,0 +1,136 @@
+.wrapper {
+    background-color: #271A58;
+    height: 1440px;
+    color: #FFF;
+}
+
+.top_block {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 36px;
+}
+
+.logo_text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 140px;
+
+}
+.logo{
+    width: 29px;
+    height: 20px;
+    padding-right: 10px;
+}
+.text{
+    width: 182px;
+    height: 28px;
+}
+.login_button{
+    width: 77px;
+    height: 36px;
+    background-color: #140D40;
+    border-radius: 46px;
+    outline: none;
+    border: none;
+    color: #FFF;
+    font-family: 'StratosSkyeng';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 140px;
+    cursor: pointer;
+}
+
+.login_button:hover {
+    background-color: #2D1F79;
+}
+
+.login_button:active {
+    background-color: #3B29A1;
+}
+
+.caption_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.caption_small {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 115%;
+    color: #FFFFFF;
+    opacity: 0.5;
+    width: 373px;
+    padding-top: 34px;
+}
+
+.caption_big{
+    font-family: 'StratosSkyeng';
+    width: 830px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 91.5%;
+    letter-spacing: -1.16878px;
+    color: #F4F4FF;
+    padding-top: 17px;
+}
+
+.sticker {
+    padding-left: 152px;
+}
+
+.content {
+    padding-top: 52px;
+    display: flex;
+    justify-content: center;
+}
+
+.content_items{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 1194px;
+    gap: 47px;
+}
+
+.content_img {
+    width: 360px;
+    height: 480px;
+}
+
+.up_button {
+    background-color: #C7E957;
+    color: #000;
+    border-radius: 46px;
+    width: 147px;
+    height: 48px;
+    font-family: 'StratosSkyeng';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.up_button:hover {
+    background-color: #DAF289;
+}
+
+.up_button:active {
+    background-color: #EBFFAB;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 34px;
+}

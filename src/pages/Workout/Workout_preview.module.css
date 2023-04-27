@@ -1,0 +1,210 @@
+.wrapper {
+    background-color: #FAFAFA;
+    height: 100%;
+    font-family: 'StratosSkyeng', sans-serif;
+}
+
+.logo_text{
+    padding-top: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 140px;
+
+}
+.logo{
+    width: 29px;
+    height: 20px;
+    padding-right: 10px;
+}
+.text{
+    width: 182px;
+    height: 28px;
+}
+
+.img_block{
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    width: 1160px;              
+    height: 310px;
+    padding-top: 74px;
+}
+
+.infoblock{
+
+}
+.caption{
+    color: #000;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    padding-bottom: 40px;
+    padding-top: 75px;
+    padding-left: 255px;
+}
+
+.info_items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 90px;
+}
+.info_item {
+    display: flex;
+    flex-direction: row;
+}
+
+.info_cirlce {
+    background-color: #C7E957;
+    width: 67px;
+    height: 67px;
+    border-radius: 100px;
+    margin-left: 24px;
+
+}
+.info_number {
+    color: #000;
+    padding-left: 25px;
+    padding-top: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.info_text {
+    max-width: 274px;
+    color: #000;
+    font-family: 'StratosSkyeng';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    display: flex;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    margin-left: 24px;
+}
+
+.list_caption{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    padding-bottom: 22px;
+    padding-top: 107px;
+    padding-left: 255px;
+}
+.lists {
+    display: flex;
+    flex-direction: row;
+    padding-left: 265px;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    padding-right: 258px ;
+}
+
+.list_item {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+
+}
+
+.info {
+    width: 1120px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    padding-top: 121px;
+    padding-bottom: 61px ;
+    padding-left: 235px;
+}
+
+.info_3 {
+    width: 1120px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    padding-top: 11px;
+    padding-bottom: 61px ;
+    padding-left: 235px;
+}
+
+.goals_list {
+    width: 1160px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    padding-top: 18px;
+    padding-bottom: 15px ;
+    padding-left: 275px;
+}
+
+.goals {
+    display: flex;
+    flex-direction: column;
+    padding-left: 348px ;
+    width: 900px;
+    gap: 10px;
+    padding-bottom: 48px;
+}
+
+.button {
+    background-color: #580EA2;
+    color: #FFF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    width: 275px;
+    height: 52px;
+    border-radius: 46px;
+    outline: none;
+    border: none;
+    margin-bottom: 143px;
+}
+
+.button:hover {
+    background-color: #3F007D;
+}
+
+.button:active {
+    background-color: #271A58;
+}
+
+.info_2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    padding-bottom: 46px;
+    width: 823px;
+}
+
+.pic {
+    width: 300px;
+    position: relative;
+    bottom: 70px;
+}
+
+.infoblock_bottom {
+    display: flex;
+    flex-direction: column; 
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
