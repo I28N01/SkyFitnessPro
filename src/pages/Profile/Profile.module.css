@@ -1,0 +1,165 @@
+.container {
+  max-width: 100%;
+  height: 100vh;
+  margin-left: 140px;
+  margin-right: 140px;
+  position: relative;
+  background-color: #FFFFFF;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 780px;
+  margin-bottom: 75px;
+  margin-top: 40px;
+}
+
+.userBlock {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.ava {
+  width: 50px;
+  height: 50px;
+}
+
+.name {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: right;
+  letter-spacing: -0.1px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #000000;
+}
+
+.arrow {
+  width: 14px;
+  height: 10px;
+}
+
+.profileBlock {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+}
+
+.title {
+  margin-bottom: 40px;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 56px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #000000;
+}
+
+.text {
+  margin-bottom: 20px;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #000000;
+}
+
+.courseBlock {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 640px;
+}
+
+.titleBlock {
+  margin-top: 75px;
+  margin-bottom: 60px;
+}
+
+.titleCourse {
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 56px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #000000;
+}
+
+.courseCardBlock {
+  display: flex;
+  gap: 20px;
+}
+
+.courseCard {
+  position: relative;
+}
+
+.card {
+  width: 360px;
+  height: 480px;
+  left: 0px;
+  top: 0px;
+  background: rgba(205, 205, 205, 0.1);
+  -webkit-backdrop-filter: blur(14.5187px);
+          backdrop-filter: blur(14.5187px);
+  border-radius: 30px;
+}
+
+.buttonCard {
+  position: absolute;
+  width: 136px;
+  height: 43px;
+  background: #C7E957;
+  border-radius: 80px;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 115%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  letter-spacing: -0.05px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #000000;
+  left: 44px;
+  top: 390px;
+}
+
+.button {
+  width: 278px;
+  height: 52px;
+  font-family: "StratosSkyeng", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #FFFFFF;
+  letter-spacing: -0.05px;
+  background-color: #580EA2;
+  border-radius: 46px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #3F007D;
+}
+.button:active {
+  background-color: #271A58;
+}/*# sourceMappingURL=Profile.module.css.map */

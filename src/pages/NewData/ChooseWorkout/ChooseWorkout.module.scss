@@ -1,0 +1,116 @@
+.container {
+  max-width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 444px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-start;
+  padding: 36px 0 58px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+.title {
+  font-style: normal;
+  font-size: 32px;
+  line-height: 40px;
+  color: #000000;
+}
+
+.checked {
+  position: absolute;
+  right: 14px;
+}
+
+.workoutList {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  padding: 0 24px;
+  overflow-y: scroll;
+  height: 440px;
+}
+
+// styling scroll //
+
+.workoutList::-webkit-scrollbar-track {
+  border: 1px solid #f2f2f2;
+  padding: 2px 0;
+  background-color: #f2f2f2;
+}
+
+.workoutList::-webkit-scrollbar {
+  width: 5px;
+}
+
+.workoutList::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #cecece;
+}
+
+// styling scroll end //
+
+.singleWorkout {
+  border: 1px solid #000000;
+  border-radius: 26px;
+  padding: 10px 28px;
+  width: 222px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-style: normal;
+    font-size: 20px;
+    line-height: 115%;
+    text-align: center;
+    color: #000000;
+  }
+
+  &__subTitle {
+    font-style: normal;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+    color: #000000;
+  }
+}
+
+.singleWorkout_active {
+  border: 1px solid #06b16e;
+  border-radius: 26px;
+  padding: 10px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &__title {
+    font-style: normal;
+    font-size: 20px;
+    line-height: 115%;
+    text-align: center;
+    color: #06b16e;
+  }
+
+  &__subTitle {
+    font-style: normal;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+    color: #06b16e;
+  }
+}
