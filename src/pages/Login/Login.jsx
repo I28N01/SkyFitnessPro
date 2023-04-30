@@ -1,36 +1,52 @@
 import { useNavigate } from 'react-router-dom';
-// import { useState } from 'react';
+import { useState } from 'react';
 import React from 'react';
 import S from './Login.module.scss';
-// import LoginButton from '../../components/LoginButton/LoginButton';
 import logo from '../../img/logo.png';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../../database/db'
 
 const Login = () => {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const navigate = useNavigate()
-
-  // const handleEmailChange = ({ target }) => {
-  //     setEmail(target.value)
-  // }
-
-  // const handlePasswordChange = ({ target }) => {
-  //     setPassword(target.value)
-  // }
+  const navigate = useNavigate();
 
   const handleSignup = () => {
-      navigate('/Signup')
-  }
+    navigate('/Signup');
+  };
+
+  const loginButton = (email, password, e) => {
+    e.preventDefault();
+    const auth = getAuth();
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log('Выполнен вход:', user);
+        navigate('/profile');
+      })
+      .catch((error) => {
+        console.error('Ошибка входа:', error);
+      });
+  };
 
   return (
     <div className={S.container}>
       <div className={S.formWrapper}>
         <form className={S.form}>
           <img className={S.logo} src={logo} alt="logo" />
-          <input className={S.input} placeholder="Логин" type="text" />
-          <input className={S.input} placeholder="Пароль" type="password" />
-          <button className={S.loginButton}> Войти</button>
+          <input className={S.input} placeholder="Email"
+            type="text"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <input className={S.input} placeholder="Пароль"
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <button className={S.loginButton} onClick={(e) => loginButton(email, password, e)}  type="button"> Войти</button>
           <button className={S.signupButton} onClick={handleSignup} type="button">
             Зарегистрироваться
           </button>
