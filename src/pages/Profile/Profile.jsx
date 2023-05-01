@@ -5,13 +5,38 @@ import arrow from '../../img/arrow.png';
 import yoga from '../../img/yoga.png';
 import stretching from '../../img/stretching.png';
 import bodyflex from '../../img/bodyflex.png';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../database/db';
 
 
 const Profile = () => {
 
+  const [userEmail, setUserEmail] = useState('');
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserEmail(user.email);
+      } else {
+        setUserEmail('');
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const [userName, setUserName] = useState('');
+  const [displayName, setDisplayName] = useState('');
+  const [showNameForm, setShowNameForm] = useState(false);
+  const handleNameSubmit = (e) => {
+    e.preventDefault();
+    setDisplayName(userName);
+    setShowNameForm(false);
+  };
   const [isOpen, setIsOpen] = useState(false);
   const arrowClickHandler = () => setIsOpen(!isOpen);
 
@@ -53,7 +78,24 @@ const Profile = () => {
               <img className={S.ava} src={ava} alt="avatar" />
             </div>
             <div className={S.nameBlock}>
-              <p className={S.name}>Сергей</p>
+              <p className={S.name}>{displayName ? displayName : 'Имя'}</p>
+              {!displayName && !showNameForm && (
+                <button onClick={() => setShowNameForm(true)}>Введите ваше имя</button>
+              )}
+              {!displayName && showNameForm && (
+                <form onSubmit={handleNameSubmit}>
+                  <input
+                    className={S.nameInput}
+                    type="text"
+                    placeholder="Введите ваше имя"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                  <button className={S.submitNameButton} type="submit">
+                    Сохранить
+                  </button>
+                </form>
+              )}
             </div>
             <div className={S.arrowBlock} >
               <img className={S.arrow} onClick={arrowClickHandler} src={arrow} alt="arrow" />
@@ -66,8 +108,8 @@ const Profile = () => {
         </div>
         <div className={S.profileBlock}>
           <h2 className={S.title}> Мой профиль</h2>
-          <p className={S.text}> Логин: sergey.petrov96</p>
-          <p className={S.text}> Пароль: 4fkhdj880d</p>
+          <p className={S.text}> Логин: {userEmail}</p>
+          <p className={S.text}> Пароль: ********</p>
           <button className={S.button} onClick={handleLoginChange}> Редактировать логин</button>
           <button className={S.button} onClick={handlePasswordChange}> Редактировать пароль</button>
         </div>
