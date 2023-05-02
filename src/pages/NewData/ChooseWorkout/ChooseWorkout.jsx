@@ -4,26 +4,34 @@ import React from 'react';
 import { useState } from 'react';
 
 const ChooseWorkout = () => {
-  const [isActive, setIsActive] = useState(false);
 
-  const handleClick = (event) => {
-    setIsActive((current) => !current);
-    if (isActive) {
-      event.currentTarget.className = `${S.singleWorkout_active}`;
+  const [isActive, setIsActive] = useState([]);
+
+  function handleClick(index) {
+    const currentIndex = isActive.indexOf(index);
+    const newIndexes = [...isActive];
+
+    if (currentIndex === -1) {
+      newIndexes.push(index);
     } else {
-      event.currentTarget.className = `${S.singleWorkout}`;
+      newIndexes.splice(currentIndex, 1);
     }
-  };
+    setIsActive(newIndexes);
+  }
 
   return (
     <div className={S.container}>
       <div className={S.wrapper}>
         <h3 className={S.title}>Выберите тренировку</h3>
         <div className={S.workoutList}>
-          {Workout.map((i) => (
-            <div className={S.singleWorkout} key={i.id} onClick={handleClick}>
-              <p className={S.singleWorkout__title}>{i.name}</p>
-              <p className={S.singleWorkout__subTitle}>{i.programm}</p>
+          {Workout.map((item, index) => (
+            <div
+              key={item.id}
+              className={`${S.singleWorkout} ${isActive.includes(index) && S.singleWorkout_active}`}
+              onClick={() => handleClick(index)}
+            >
+              <p className={S.singleWorkout__title}>{item.name}</p>
+              <p className={S.singleWorkout__subTitle}>{item.programm}</p>
             </div>
           ))}
         </div>
