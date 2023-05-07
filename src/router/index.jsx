@@ -28,5 +28,5 @@ export const publicRoutes = [
   { path: '/workout/bodyflex', component: <Bodyflex_prev /> },
   { path: '/login', component: <Login /> },
   { path: '/Signup', component: <Signup /> },
-  { path: '/ChooseWorkout', component: <ChooseWorkout /> },
+  { path: '/workout/:id', component: <ChooseWorkout /> },
 ];
