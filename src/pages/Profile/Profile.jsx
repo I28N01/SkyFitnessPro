@@ -5,14 +5,12 @@ import arrow from '../../img/arrow.png';
 import yoga from '../../img/yoga.png';
 import stretching from '../../img/stretching.png';
 import bodyflex from '../../img/bodyflex.png';
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../database/db';
 
-
 const Profile = () => {
-
   const [userEmail, setUserEmail] = useState('');
 
   useEffect(() => {
@@ -40,31 +38,36 @@ const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const arrowClickHandler = () => setIsOpen(!isOpen);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleExit = () => {
-    navigate('/main')
-  }
+    navigate('/main');
+  };
 
   const handlePasswordChange = () => {
-    navigate('/passchange')
-  }
+    navigate('/passchange');
+  };
 
   const handleLoginChange = () => {
-    navigate('/namechange')
-  }
+    navigate('/namechange');
+  };
 
   const handleYogaClick = () => {
-    navigate('/workout/yoga')
-  }
+    navigate('/workout/yoga');
+  };
 
   const handleStretchingClick = () => {
-    navigate('/workout/stretching')
-  }
+    navigate('/workout/stretching');
+  };
 
   const handleBodyflexClick = () => {
-    navigate('/workout/bodyflex')
-  }
+    navigate('/workout/bodyflex');
+  };
+
+  const handleCourseClick = (e) => {
+    const courseId = e.currentTarget.dataset.id;
+    navigate(`/workout/${courseId}`);
+  };
 
   return (
     <div className={S.container}>
@@ -80,7 +83,9 @@ const Profile = () => {
             <div className={S.nameBlock}>
               <p className={S.name}>{displayName ? displayName : 'Имя'}</p>
               {!displayName && !showNameForm && (
-                <button onClick={() => setShowNameForm(true)}>Введите ваше имя</button>
+                <button onClick={() => setShowNameForm(true)}>
+                  Введите ваше имя
+                </button>
               )}
               {!displayName && showNameForm && (
                 <form onSubmit={handleNameSubmit}>
@@ -97,12 +102,20 @@ const Profile = () => {
                 </form>
               )}
             </div>
-            <div className={S.arrowBlock} >
-              <img className={S.arrow} onClick={arrowClickHandler} src={arrow} alt="arrow" />
-              {isOpen && 
-              <div className={S.exit}>
-                <button className={S.buttonExit} onClick={handleExit}>Выход</button>
-                </div>}
+            <div className={S.arrowBlock}>
+              <img
+                className={S.arrow}
+                onClick={arrowClickHandler}
+                src={arrow}
+                alt="arrow"
+              />
+              {isOpen && (
+                <div className={S.exit}>
+                  <button className={S.buttonExit} onClick={handleExit}>
+                    Выход
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -110,25 +123,31 @@ const Profile = () => {
           <h2 className={S.title}> Мой профиль</h2>
           <p className={S.text}> Логин: {userEmail}</p>
           <p className={S.text}> Пароль: ********</p>
-          <button className={S.button} onClick={handleLoginChange}> Редактировать логин</button>
-          <button className={S.button} onClick={handlePasswordChange}> Редактировать пароль</button>
+          <button className={S.button} onClick={handleLoginChange}>
+            {' '}
+            Редактировать логин
+          </button>
+          <button className={S.button} onClick={handlePasswordChange}>
+            {' '}
+            Редактировать пароль
+          </button>
         </div>
         <div className={S.courseBlock}>
           <div className={S.titleBlock}>
             <h2 className={S.titleCourse}> Мои курсы</h2>
           </div>
           <div className={S.courseCardBlock}>
-            <div className={S.courseCard}>
+            <div className={S.courseCard} data-id="sw35tf" onClick={handleCourseClick}>
               <img className={S.card} src={yoga} alt="yoga" />
-              <button className={S.buttonCard} onClick={handleYogaClick}> Перейти →</button>
+              <button className={S.buttonCard}>Перейти →</button>
             </div>
-            <div className={S.courseCard}>
+            <div className={S.courseCard} data-id="sw35tf" onClick={handleCourseClick}>
               <img className={S.card} src={stretching} alt="stretching" />
-              <button className={S.buttonCard} onClick={handleStretchingClick}> Перейти →</button>
+              <button className={S.buttonCard}>Перейти →</button>
             </div>
-            <div className={S.courseCard}>
+            <div className={S.courseCard} data-id="sw35tf" onClick={handleCourseClick}>
               <img className={S.card} src={bodyflex} alt="bodyflex" />
-              <button className={S.buttonCard} onClick={handleBodyflexClick}> Перейти →</button>
+              <button className={S.buttonCard}>Перейти →</button>
             </div>
           </div>
         </div>
