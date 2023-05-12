@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import S from './Main.module.css';
 import Logo from '../../img/Logo_.png';
 import LogoText from '../../img/SkyFitnessPro_white.png';
@@ -8,9 +8,34 @@ import Bodyflex from '../../img/bodyflex_.png';
 import Dance from '../../img/dance.png';
 import Aerobics from '../../img/aerobics.png';
 import Stretching from '../../img/stretching_.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/authContext';
 
 const Main = () => {
+
+  const { auth, setAuth } = useContext(AuthContext)
+  const navigate = useNavigate();
+
+
+//   useEffect(() => {
+//     if (localStorage.getItem('auth')) {
+        // setAuth(true);
+//     }
+
+// }, []);
+
+function logIn() {
+  // setAuth(true);
+  // localStorage.setItem('auth', 'true')
+  navigate('/Login');
+
+}
+
+function goToProfile() {
+  navigate('/profile');
+}
+
+
   return (
     <div className={S.wrapper}>
       <div className={S.top_block}>
@@ -18,9 +43,10 @@ const Main = () => {
           <img className={S.logo} src={Logo} alt="logo" />
           <img className={S.text} src={LogoText} alt="text" />
         </div>
-        <NavLink to={'/login'}>
-          <button className={S.login_button}>Войти</button>
-        </NavLink>
+          {auth ?
+          <button onClick={goToProfile} className={S.profile_button}>Мой профиль</button>
+            :
+          <button onClick={logIn} className={S.login_button}>Войти</button>}
       </div>
 
       <div className={S.caption_block}>

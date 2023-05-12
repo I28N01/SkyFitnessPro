@@ -36,7 +36,6 @@
     outline: none;
     border: none;
     color: #FFF;
-    font-family: 'StratosSkyeng';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -45,11 +44,29 @@
     cursor: pointer;
 }
 
-.login_button:hover {
+.profile_button{
+    width: 107px;
+    height: 36px;
+    background-color: #140D40;
+    border-radius: 46px;
+    outline: none;
+    border: none;
+    color: #FFF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    margin-right: 140px;
+    cursor: pointer;
+}
+
+
+
+.login_button, .profile_button:hover {
     background-color: #2D1F79;
 }
 
-.login_button:active {
+.login_button, .profile_button:active {
     background-color: #3B29A1;
 }
 
@@ -71,7 +88,6 @@
 }
 
 .caption_big{
-    font-family: 'StratosSkyeng';
     width: 830px;
     font-style: normal;
     font-weight: 400;
@@ -111,7 +127,6 @@
     border-radius: 46px;
     width: 147px;
     height: 48px;
-    font-family: 'StratosSkyeng';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;

@@ -6,10 +6,11 @@ import yoga from '../../img/yoga.png';
 import stretching from '../../img/stretching.png';
 import bodyflex from '../../img/bodyflex.png';
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../database/db';
 import { AuthContext } from '../../context/authContext';
+
 
 const Profile = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -79,9 +80,9 @@ const Profile = () => {
     <div className={S.container}>
       <div className={S.main}>
         <div className={S.header}>
-          <div className={S.logoBlock}>
+          <NavLink to={'/main'}  className={S.logoBlock}>
             <img className={S.logo} src={logo} alt="logo" />
-          </div>
+          </NavLink> 
           <div className={S.userBlock}>
             <div className={S.avaBlock}>
               <img className={S.ava} src={ava} alt="avatar" />
