@@ -1,5 +1,5 @@
 import React from 'react';
-import S from './workout.module.css';
+import S from './Workout.module.css'
 function Workout() {
   return (
     <div className={S.body}>

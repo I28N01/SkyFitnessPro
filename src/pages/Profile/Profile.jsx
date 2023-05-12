@@ -5,10 +5,11 @@ import arrow from '../../img/arrow.png';
 import yoga from '../../img/yoga.png';
 import stretching from '../../img/stretching.png';
 import bodyflex from '../../img/bodyflex.png';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../database/db';
+import { AuthContext } from '../../context/authContext';
 
 const Profile = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -40,7 +41,12 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
+  const { setAuth } = useContext(AuthContext)
+
+
   const handleExit = () => {
+    setAuth(false);
+    localStorage.removeItem('auth');
     navigate('/main');
   };
 
