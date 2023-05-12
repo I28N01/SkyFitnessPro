@@ -17,7 +17,12 @@ export const privateRoutes = [
   { path: '/passchange', component: <PasswordChange /> },
   { path: '/namechange', component: <NameChange /> },
   { path: '/workout/:id', component: <ChooseWorkout /> },
-  // { path: '/main', component: <Main /> },
+  { path: '/main', component: <Main /> },
+  { path: '/workout/yoga', component: <Yoga_prev /> },
+  { path: '/workout/stretching', component: <Stretching_prev /> },
+  { path: '/workout/dance', component: <Dance_prev /> },
+  { path: '/workout/aerobics', component: <Aerobics_prev /> },
+  { path: '/workout/bodyflex', component: <Bodyflex_prev /> },
 ];
 
 export const publicRoutes = [
