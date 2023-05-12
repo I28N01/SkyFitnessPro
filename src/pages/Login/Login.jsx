@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import React from 'react';
 import S from './Login.module.scss';
 import logo from '../../img/logo.png';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from '../../database/db'
+import { AuthContext } from '../../context/authContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -16,6 +17,9 @@ const Login = () => {
     navigate('/Signup');
   };
 
+  const { setAuth } = useContext(AuthContext)
+
+
   const loginButton = (email, password, e) => {
     e.preventDefault();
     const auth = getAuth();
@@ -24,6 +28,10 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log('Выполнен вход:', user);
+        
+        setAuth(true);
+        localStorage.setItem('auth', 'true');
+
         navigate('/profile');
       })
       .catch((error) => {
