@@ -1,30 +1,28 @@
 import S from './ChooseWorkout.module.scss';
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function Workouts() {
+  const navigate = useNavigate();
   const [workouts, setWorkouts] = useState([]);
   const [isActive, setIsActive] = useState([]);
 
   function handleClick(index) {
-    const currentIndex = isActive.indexOf(index);
-    const newIndexes = [...isActive];
-
-    if (currentIndex === -1) {
-      newIndexes.push(index);
-    } else {
-      newIndexes.splice(currentIndex, 1);
-    }
-    setIsActive(newIndexes);
+    navigate(`/workout/${index}`);
   }
+
+  const parts = useLocation().pathname.split('/'); // Захватываем текущий URL
+  const course = parts.pop() || parts.pop(); // Вырезаем последнее значание URL
 
   useEffect(() => {
     fetch(
-      'https://fitness-587c7-default-rtdb.europe-west1.firebasedatabase.app/workouts.json'
+      'https://fitness-587c7-default-rtdb.europe-west1.firebasedatabase.app/courses.json'
     )
       .then((response) => response.json())
       .then((data) => {
-        const workoutsData = Object.values(data); // Преобразование объекта данных в массив значений
+        const workoutsData = Object.values(data[course].workout); // Преобразование объекта данных в массив значений
         setWorkouts(workoutsData);
       })
       .catch((error) => {
@@ -44,7 +42,7 @@ function Workouts() {
                 className={`${S.singleWorkout} ${
                   isActive.includes(workout) && S.singleWorkout_active
                 }`}
-                onClick={() => handleClick(workout)}
+                onClick={() => handleClick(workout.id)}
               >
                 <p className={S.singleWorkout__title}>{workout.name}</p>
               </div>

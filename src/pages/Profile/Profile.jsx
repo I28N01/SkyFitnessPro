@@ -11,7 +11,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../database/db';
 import { AuthContext } from '../../context/authContext';
 
-
 const Profile = () => {
   const [userEmail, setUserEmail] = useState('');
 
@@ -42,8 +41,7 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  const { setAuth } = useContext(AuthContext)
-
+  const { setAuth } = useContext(AuthContext);
 
   const handleExit = () => {
     setAuth(false);
@@ -80,9 +78,9 @@ const Profile = () => {
     <div className={S.container}>
       <div className={S.main}>
         <div className={S.header}>
-          <NavLink to={'/main'}  className={S.logoBlock}>
+          <NavLink to={'/main'} className={S.logoBlock}>
             <img className={S.logo} src={logo} alt="logo" />
-          </NavLink> 
+          </NavLink>
           <div className={S.userBlock}>
             <div className={S.avaBlock}>
               <img className={S.ava} src={ava} alt="avatar" />
@@ -144,15 +142,27 @@ const Profile = () => {
             <h2 className={S.titleCourse}> Мои курсы</h2>
           </div>
           <div className={S.courseCardBlock}>
-            <div className={S.courseCard} data-id="sw35tf" onClick={handleCourseClick}>
+            <div
+              className={S.courseCard}
+              data-id="sw35tf"
+              onClick={handleCourseClick}
+            >
               <img className={S.card} src={yoga} alt="yoga" />
               <button className={S.buttonCard}>Перейти →</button>
             </div>
-            <div className={S.courseCard} data-id="sw35tf" onClick={handleCourseClick}>
+            <div
+              className={S.courseCard}
+              data-id="ab1c3f"
+              onClick={handleCourseClick}
+            >
               <img className={S.card} src={stretching} alt="stretching" />
               <button className={S.buttonCard}>Перейти →</button>
             </div>
-            <div className={S.courseCard} data-id="sw35tf" onClick={handleCourseClick}>
+            <div
+              className={S.courseCard}
+              data-id="trq4kl"
+              onClick={handleCourseClick}
+            >
               <img className={S.card} src={bodyflex} alt="bodyflex" />
               <button className={S.buttonCard}>Перейти →</button>
             </div>
