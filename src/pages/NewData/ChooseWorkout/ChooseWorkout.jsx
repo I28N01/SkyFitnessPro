@@ -39,10 +39,8 @@ function Workouts() {
             {workouts.map((workout) => (
               <div
                 key={workout.id}
-                className={`${S.singleWorkout} ${
-                  isActive.includes(workout) && S.singleWorkout_active
-                }`}
-                onClick={() => handleClick(workout.id)}
+                className={S.singleWorkout}
+                onClick={() => handleClick()}
               >
                 <p className={S.singleWorkout__title}>{workout.name}</p>
               </div>
