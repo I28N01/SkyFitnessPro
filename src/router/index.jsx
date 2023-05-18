@@ -12,6 +12,7 @@ import Profile from '../pages/Profile/Profile';
 import PasswordChange from '../pages/NewData/PasswordChange/PasswordChange';
 import NameChange from '../pages/NewData/NameChange/NameChange';
 import Workout from '../pages/Workout/Workout';
+import Progress from '../pages/Progress/Progress';
 
 export const privateRoutes = [
   { path: '/profile', component: <Profile /> },
@@ -21,6 +22,7 @@ export const privateRoutes = [
   { path: '/main', component: <Main /> },
   { path: '/training/:id', component: <Workout /> },
   { path: "/workout/preview/:id", component: <Aerobics_prev /> },
+  { path: "/progress", component: <Progress /> },
 ];
 
 export const publicRoutes = [

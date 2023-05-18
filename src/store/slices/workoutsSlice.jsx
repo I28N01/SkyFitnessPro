@@ -9,11 +9,19 @@ export const fetchWorkouts = createAsyncThunk('workouts/fetchWorkouts', async (c
 
 export const workoutsSlice = createSlice({
   name: 'workouts',
-  initialState: [],
+  initialState: { data: [], status: 'idle', error: null }, // Добавьте новые свойства в initialState
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(fetchWorkouts.pending, (state) => {
+      state.status = 'loading';
+    });
     builder.addCase(fetchWorkouts.fulfilled, (state, action) => {
-      return action.payload;
+      state.status = 'succeeded';
+      state.data = action.payload;
+    });
+    builder.addCase(fetchWorkouts.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
     });
   },
 });

@@ -9,7 +9,8 @@ import { selectTraining } from '../../../store/slices/selectedTrainingSlice';
 function Workouts() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const workouts = useSelector((state) => state.workouts);
+
+  const workouts = useSelector((state) => state.workouts.data);
 
   const location = useLocation(); 
   const currentPath = location.pathname.split('/'); 
@@ -19,10 +20,11 @@ function Workouts() {
     dispatch(fetchWorkouts(currentCourse));
   }, [dispatch, currentCourse]);
 
-  function handleClick(index) {
-    dispatch(selectTraining(index));  // сохраните выбранный ID тренировки в состоянии Redux
-    navigate(`/training/${index}`);
-    console.log(index);
+    function handleClick(id) {
+      dispatch(selectTraining(id));
+      navigate(`/training/${id}`);
+  
+    console.log(id);
   }
   const parts = useLocation().pathname.split('/'); // Захватываем текущий URL
   const course = parts.pop() || parts.pop(); // Вырезаем последнее значание URL
