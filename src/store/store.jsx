@@ -3,8 +3,9 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import { workoutApi } from '../api/api';
 import authReducer from './slices/authSlice';
 import loadingReducer from './slices/loadingSlice';
-import selectedWorkoutReducer from './slices/selectedWorkoutSlice';
+import selectedWorkoutReducer from './slices/selectedWorkoutSlice'
 import userCoursesReducer from './slices/userCoursesSlice';
+import workoutsReducer from './slices/workoutsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     loading: loadingReducer,
     selectedWorkout: selectedWorkoutReducer,
     userCourses: userCoursesReducer,
+    workouts: workoutsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(workoutApi.middleware),

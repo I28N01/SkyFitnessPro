@@ -1,13 +1,21 @@
 import S from './ChooseWorkout.module.scss';
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchWorkouts } from '../../../store/slices/workoutsSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Workouts() {
   const navigate = useNavigate();
-  const [workouts, setWorkouts] = useState([]);
-  // const [isActive, setIsActive] = useState([]);
+  const dispatch = useDispatch();
+  const workouts = useSelector((state) => state.workouts);
+
+  const location = useLocation(); 
+  const currentPath = location.pathname.split('/'); 
+  const currentCourse = currentPath.pop() || currentPath.pop(); 
+
+  useEffect(() => {
+    dispatch(fetchWorkouts(currentCourse));
+  }, [dispatch, currentCourse]);
 
   function handleClick(index) {
     navigate(`/training/${index}`);
@@ -17,19 +25,6 @@ function Workouts() {
   const parts = useLocation().pathname.split('/'); // Захватываем текущий URL
   const course = parts.pop() || parts.pop(); // Вырезаем последнее значание URL
 
-  useEffect(() => {
-    fetch(
-      'https://fitness-587c7-default-rtdb.europe-west1.firebasedatabase.app/courses.json'
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const workoutsData = Object.values(data[course].workout); // Преобразование объекта данных в массив значений
-        setWorkouts(workoutsData);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
 
   return (
     <div>
@@ -37,9 +32,9 @@ function Workouts() {
         <div className={S.wrapper}>
           <h3 className={S.title}>Выберите тренировку</h3>
           <div className={S.workoutList}>
-            {workouts.map((workout) => (
+            {workouts.map((workout, index) => (
               <div
-                key={workout.id}
+                key={index}
                 className={S.singleWorkout}
                 onClick={() => handleClick(workout._id)}
               >
