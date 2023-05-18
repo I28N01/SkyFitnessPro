@@ -11,6 +11,7 @@ import ChooseWorkout from '../pages/NewData/ChooseWorkout/ChooseWorkout';
 import Profile from '../pages/Profile/Profile';
 import PasswordChange from '../pages/NewData/PasswordChange/PasswordChange';
 import NameChange from '../pages/NewData/NameChange/NameChange';
+import Workout from '../pages/Workout/Workout';
 
 export const privateRoutes = [
   { path: '/profile', component: <Profile /> },
@@ -18,11 +19,8 @@ export const privateRoutes = [
   { path: '/namechange', component: <NameChange /> },
   { path: '/workout/:id', component: <ChooseWorkout /> },
   { path: '/main', component: <Main /> },
-  { path: '/workout/yoga', component: <Yoga_prev /> },
-  { path: '/workout/stretching', component: <Stretching_prev /> },
-  { path: '/workout/dance', component: <Dance_prev /> },
+  { path: '/training/:id', component: <Workout /> },
   { path: "/workout/preview/:id", component: <Aerobics_prev /> },
-  { path: '/workout/bodyflex', component: <Bodyflex_prev /> },
 ];
 
 export const publicRoutes = [

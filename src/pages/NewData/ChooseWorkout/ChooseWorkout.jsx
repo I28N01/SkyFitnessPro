@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWorkouts } from '../../../store/slices/workoutsSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { selectTraining } from '../../../store/slices/selectedTrainingSlice';
+
 
 function Workouts() {
   const navigate = useNavigate();
@@ -18,10 +20,10 @@ function Workouts() {
   }, [dispatch, currentCourse]);
 
   function handleClick(index) {
+    dispatch(selectTraining(index));  // сохраните выбранный ID тренировки в состоянии Redux
     navigate(`/training/${index}`);
     console.log(index);
   }
-
   const parts = useLocation().pathname.split('/'); // Захватываем текущий URL
   const course = parts.pop() || parts.pop(); // Вырезаем последнее значание URL
 

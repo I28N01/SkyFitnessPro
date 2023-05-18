@@ -6,6 +6,7 @@ import loadingReducer from './slices/loadingSlice';
 import selectedWorkoutReducer from './slices/selectedWorkoutSlice'
 import userCoursesReducer from './slices/userCoursesSlice';
 import workoutsReducer from './slices/workoutsSlice';
+import selectedTrainingReducer from './slices/selectedTrainingSlice';
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     selectedWorkout: selectedWorkoutReducer,
     userCourses: userCoursesReducer,
     workouts: workoutsReducer,
+    selectedTraining: selectedTrainingReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(workoutApi.middleware),
