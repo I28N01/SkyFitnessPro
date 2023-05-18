@@ -7,10 +7,11 @@ import { NavLink, useNavigate } from 'react-router-dom';
 function Workouts() {
   const navigate = useNavigate();
   const [workouts, setWorkouts] = useState([]);
-  const [isActive, setIsActive] = useState([]);
+  // const [isActive, setIsActive] = useState([]);
 
   function handleClick(index) {
-    navigate(`/workout/${index}`);
+    navigate(`/training/${index}`);
+    console.log(index);
   }
 
   const parts = useLocation().pathname.split('/'); // Захватываем текущий URL
@@ -40,7 +41,7 @@ function Workouts() {
               <div
                 key={workout.id}
                 className={S.singleWorkout}
-                onClick={() => handleClick()}
+                onClick={() => handleClick(workout._id)}
               >
                 <p className={S.singleWorkout__title}>{workout.name}</p>
               </div>
