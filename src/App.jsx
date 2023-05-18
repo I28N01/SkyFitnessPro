@@ -1,59 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
-import { privateRoutes, publicRoutes } from './router';
+import { privateRoutes, publicRoutes } from './router/index';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { AuthContext } from './context/authContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsAuthenticated } from './store/slices/authSlice';
+import { setLoading } from './store/slices/loadingSlice';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+  const loading = useSelector((state) => state.loading);
 
-
-  const [auth, setAuth] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-
-    useEffect(() => {
-      if (localStorage.getItem('auth')) {
-          setAuth(true);
-      }
-      setLoading(false);
-  }, []);
+  useEffect(() => {
+    if (localStorage.getItem('auth')) {
+      dispatch(setIsAuthenticated(true));
+    }
+    dispatch(setLoading(false));
+  }, [dispatch]);
 
   if (loading) {
-    return <div/>
+    return <div />;
   }
-  return auth ? (
-    <AuthContext.Provider
-            value={{
-                auth,
-                setAuth,
-                loading,
-            }}
-        > 
-    <Routes>
-      {privateRoutes.map((route) => (
-        <Route path={route.path} element={route.component} key={route.path} />
-      ))}
-      ;
-      <Route path="*" element={<Navigate replace to="/profile" />} />
-    </Routes>
-   </AuthContext.Provider>)
-    :
-    (<AuthContext.Provider
-      value={{
-          auth,
-          setAuth,
-          loading,
-      }}
-  > 
-    <Routes>
-      {publicRoutes.map((route) => (
-        <Route path={route.path} element={route.component} key={route.path} />
-      ))}
-      ;
-      <Route path="*" element={<Navigate replace to="/main" />} />
-    </Routes>
 
-    </AuthContext.Provider>
+  return (
+    <Routes>
+      {auth
+        ? privateRoutes.map((route) => (
+            <Route path={route.path} element={route.component} key={route.path} />
+          ))
+        : publicRoutes.map((route) => (
+            <Route path={route.path} element={route.component} key={route.path} />
+          ))}
+      <Route path="*" element={<Navigate replace to={auth ? '/profile' : '/main'} />} />
+    </Routes>
   );
 };
 

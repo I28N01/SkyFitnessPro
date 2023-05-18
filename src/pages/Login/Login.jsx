@@ -1,24 +1,23 @@
 import { useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import React from 'react';
 import S from './Login.module.scss';
 import logo from '../../img/logo.png';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import {auth} from '../../database/db'
-import { AuthContext } from '../../context/authContext';
+import { auth } from '../../database/db';
+import { useDispatch } from 'react-redux';
+import { setIsAuthenticated } from '../../store/slices/authSlice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSignup = () => {
     navigate('/Signup');
   };
-
-  const { setAuth } = useContext(AuthContext)
-
 
   const loginButton = (email, password, e) => {
     e.preventDefault();
@@ -28,8 +27,8 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log('Выполнен вход:', user);
-        
-        setAuth(true);
+
+        dispatch(setIsAuthenticated(true));
         localStorage.setItem('auth', 'true');
 
         navigate('/profile');
@@ -54,7 +53,7 @@ const Login = () => {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-          <button className={S.loginButton} onClick={(e) => loginButton(email, password, e)}  type="button"> Войти</button>
+          <button className={S.loginButton} onClick={(e) => loginButton(email, password, e)} type="button"> Войти</button>
           <button className={S.signupButton} onClick={handleSignup} type="button">
             Зарегистрироваться
           </button>

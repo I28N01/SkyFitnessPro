@@ -21,7 +21,7 @@ export const privateRoutes = [
   { path: '/workout/yoga', component: <Yoga_prev /> },
   { path: '/workout/stretching', component: <Stretching_prev /> },
   { path: '/workout/dance', component: <Dance_prev /> },
-  { path: '/workout/aerobics', component: <Aerobics_prev /> },
+  { path: "/workout/preview/:id", component: <Aerobics_prev /> },
   { path: '/workout/bodyflex', component: <Bodyflex_prev /> },
 ];
 
@@ -30,7 +30,7 @@ export const publicRoutes = [
   { path: '/workout/yoga', component: <Yoga_prev /> },
   { path: '/workout/stretching', component: <Stretching_prev /> },
   { path: '/workout/dance', component: <Dance_prev /> },
-  { path: '/workout/aerobics', component: <Aerobics_prev /> },
+  { path: '/workout/:id', component: <Aerobics_prev /> },
   { path: '/workout/bodyflex', component: <Bodyflex_prev /> },
   { path: '/login', component: <Login /> },
   { path: '/Signup', component: <Signup /> },

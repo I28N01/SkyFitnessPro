@@ -5,11 +5,12 @@ import arrow from '../../img/arrow.png';
 import yoga from '../../img/yoga.png';
 import stretching from '../../img/stretching.png';
 import bodyflex from '../../img/bodyflex.png';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../database/db';
-import { AuthContext } from '../../context/authContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsAuthenticated } from '../../store/slices/authSlice';
 
 const Profile = () => {
   const [userEmail, setUserEmail] = useState('');
@@ -28,6 +29,17 @@ const Profile = () => {
     };
   }, []);
 
+  const isAuthenticated = useSelector((state) => state.auth);
+  const userCourses = useSelector((state) => state.userCourses.userCourses);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleExit = () => {
+    dispatch(setIsAuthenticated(false));
+    localStorage.removeItem('auth');
+    navigate('/main');
+  };
+
   const [userName, setUserName] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [showNameForm, setShowNameForm] = useState(false);
@@ -39,15 +51,7 @@ const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const arrowClickHandler = () => setIsOpen(!isOpen);
 
-  const navigate = useNavigate();
 
-  const { setAuth } = useContext(AuthContext);
-
-  const handleExit = () => {
-    setAuth(false);
-    localStorage.removeItem('auth');
-    navigate('/main');
-  };
 
   const handlePasswordChange = () => {
     navigate('/passchange');
@@ -68,10 +72,14 @@ const Profile = () => {
   const handleBodyflexClick = () => {
     navigate('/workout/bodyflex');
   };
-
   const handleCourseClick = (e) => {
     const courseId = e.currentTarget.dataset.id;
-    navigate(`/workout/${courseId}`);
+  
+    if (userCourses.includes(courseId)) {
+      navigate(`/workout/${courseId}`);
+    } else {
+      // Можете показать сообщение об ошибке или выполнить другое действие, если пользователь не имеет доступа к этому курсу.
+    }
   };
 
   return (

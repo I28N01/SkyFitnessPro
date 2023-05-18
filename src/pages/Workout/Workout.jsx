@@ -1,6 +1,15 @@
 import React from 'react';
-import S from './Workout.module.css'
+import { useParams } from 'react-router-dom';
+import { useGetWorkoutByIdQuery } from '../../api/api';
+import S from './Workout.module.css';
+
 function Workout() {
+  const { id } = useParams();
+  const { data: workoutData, isLoading } = useGetWorkoutByIdQuery(id);
+
+  if (isLoading) {
+    return <div>Загрузка...</div>;
+  }
   return (
     <div className={S.body}>
       <header className={S.header}>
@@ -8,13 +17,9 @@ function Workout() {
         <div className={S.name}>Сергей</div>
       </header>
       <div className={S.main}>
-        <h1 className={S.h1}>Йога</h1>
-
-        <h3 className={S.h3}>
-          Красота и здоровье / Йога на каждый день / 2 день
-        </h3>
-
-        <video className={S.video} src=""></video>
+        <h1 className={S.h1}>{workoutData.title}</h1>
+        <h3 className={S.h3}>{workoutData.subtitle}</h3>
+        <video className={S.video} src={workoutData.videoUrl}></video>
       </div>
       <div className={S.footer}>
         <div className={S.leftMenu}>

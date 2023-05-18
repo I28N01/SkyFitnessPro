@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import S from './Main.module.css';
 import Logo from '../../img/Logo_.png';
 import LogoText from '../../img/SkyFitnessPro_white.png';
@@ -8,34 +8,35 @@ import Bodyflex from '../../img/bodyflex_.png';
 import Dance from '../../img/dance.png';
 import Aerobics from '../../img/aerobics.png';
 import Stretching from '../../img/stretching_.png';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/authContext';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedWorkout } from '../../store/slices/selectedWorkoutSlice';
 
 const Main = () => {
-
-  const { auth, setAuth } = useContext(AuthContext)
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const auth = useSelector((state) => state.auth);
+  const userCourses = useSelector((state) => state.userCourses.userCourses);
 
+  const goToProfile = () => {
+    navigate('/profile');
+  };
 
-//   useEffect(() => {
-//     if (localStorage.getItem('auth')) {
-        // setAuth(true);
-//     }
+  const logIn = () => {
+    navigate('/login');
+  };
 
-// }, []);
-
-function logIn() {
-  // setAuth(true);
-  // localStorage.setItem('auth', 'true')
-  navigate('/Login');
-
-}
-
-function goToProfile() {
-  navigate('/profile');
-}
-
-
+  const handleWorkoutClick = (workoutId) => {
+    if (auth && userCourses.includes(workoutId)) {
+      navigate(`/workout/${workoutId}`);
+    } else {
+      navigate(`/workout/preview/${workoutId}`);
+    }
+  };
+  const handleProfileClick = (workoutId) => {
+    dispatch(setSelectedWorkout(workoutId));
+    navigate(`/workout/${workoutId}`);
+  };
   return (
     <div className={S.wrapper}>
       <div className={S.top_block}>
@@ -43,7 +44,7 @@ function goToProfile() {
           <img className={S.logo} src={Logo} alt="logo" />
           <img className={S.text} src={LogoText} alt="text" />
         </div>
-          {auth ?
+        {auth ?
           <button onClick={goToProfile} className={S.profile_button}>Мой профиль</button>
             :
           <button onClick={logIn} className={S.login_button}>Войти</button>}
@@ -63,21 +64,21 @@ function goToProfile() {
 
       <div className={S.content}>
         <div className={S.content_items}>
-          <NavLink to={'/workout/yoga'}>
+          <div onClick={() => handleWorkoutClick('sw35tf')}>
             <img className={S.content_img} src={Yoga} alt="" />
-          </NavLink>
-          <NavLink to={'/workout/stretching'}>
+          </div>
+          <div onClick={() => handleWorkoutClick('ab1c3f')}>
             <img className={S.content_img} src={Stretching} alt="" />
-          </NavLink>
-          <NavLink to={'/workout/dance'}>
+          </div>
+          <div onClick={() => handleWorkoutClick('hu8dvl')}>
             <img className={S.content_img} src={Dance} alt="" />
-          </NavLink>
-          <NavLink to={'/workout/aerobics'}>
+          </div>
+          <div onClick={() => handleWorkoutClick('fdd3ba')}>
             <img className={S.content_img} src={Aerobics} alt="" />
-          </NavLink>
-          <NavLink to={'/workout/bodyflex'}>
+          </div>
+          <div onClick={() => handleWorkoutClick('trq4kl')}>
             <img className={S.content_img} src={Bodyflex} alt="" />
-          </NavLink>
+          </div>
         </div>
       </div>
       <div className={S.footer}>
