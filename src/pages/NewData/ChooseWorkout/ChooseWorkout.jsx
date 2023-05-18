@@ -5,30 +5,26 @@ import { fetchWorkouts } from '../../../store/slices/workoutsSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { selectTraining } from '../../../store/slices/selectedTrainingSlice';
 
-
 function Workouts() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const workouts = useSelector((state) => state.workouts.data);
 
-  const location = useLocation(); 
-  const currentPath = location.pathname.split('/'); 
-  const currentCourse = currentPath.pop() || currentPath.pop(); 
+  const location = useLocation();
+  const currentPath = location.pathname.split('/');
+  const currentCourse = currentPath.pop() || currentPath.pop();
 
   useEffect(() => {
     dispatch(fetchWorkouts(currentCourse));
   }, [dispatch, currentCourse]);
 
-    function handleClick(id) {
-      dispatch(selectTraining(id));
-      navigate(`/training/${id}`);
-  
+  function handleClick(id) {
+    dispatch(selectTraining(id));
+    navigate(`/training/${id}`);
+
     console.log(id);
   }
-  const parts = useLocation().pathname.split('/'); // Захватываем текущий URL
-  const course = parts.pop() || parts.pop(); // Вырезаем последнее значание URL
-
 
   return (
     <div>
